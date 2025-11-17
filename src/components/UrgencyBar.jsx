@@ -2,6 +2,30 @@ import { Icon } from '@iconify/react'
 import { motion } from 'framer-motion'
 
 const UrgencyBar = () => {
+  const tickerText = (
+    <>
+      <motion.span
+        className="urgency-icon"
+        animate={{ 
+          rotate: [0, 15, -15, 0],
+        }}
+        transition={{
+          duration: 1.5,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      >
+        <Icon icon="ph:fire-bold" width="22" height="22" />
+      </motion.span>
+      <span className="urgency-label">OFERTA ESPECIAL:</span>
+      <span className="urgency-offer">Primera consulta GRATIS + Diagnóstico espiritual completo</span>
+      <span className="urgency-separator">|</span>
+      <Icon icon="ph:clock-bold" width="18" height="18" />
+      <span className="urgency-timer-text">Solo por tiempo limitado</span>
+      <span className="urgency-separator">•</span>
+    </>
+  )
+
   return (
     <motion.div 
       className="urgency-bar"
@@ -14,33 +38,24 @@ const UrgencyBar = () => {
         stiffness: 100
       }}
     >
-      <motion.p
-        animate={{ 
-          scale: [1, 1.02, 1],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      >
-        <motion.span
+      <div className="urgency-ticker-wrapper">
+        <motion.div 
+          className="urgency-ticker"
           animate={{ 
-            rotate: [0, 15, -15, 0],
+            x: [0, -1500],
           }}
           transition={{
-            duration: 1.5,
+            duration: 25,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "linear"
           }}
-          style={{ display: 'inline-block' }}
         >
-          <Icon icon="ph:fire-bold" width="20" height="20" style={{ marginRight: '8px' }} />
-        </motion.span>
-        <strong>OFERTA ESPECIAL:</strong> Primera consulta GRATIS + Diagnóstico espiritual completo | 
-        <Icon icon="ph:clock-bold" width="18" height="18" style={{ margin: '0 8px' }} />
-        Solo por tiempo limitado
-      </motion.p>
+          {tickerText}
+          {tickerText}
+          {tickerText}
+          {tickerText}
+        </motion.div>
+      </div>
     </motion.div>
   )
 }

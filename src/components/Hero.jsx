@@ -40,6 +40,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.7 }}
+          style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
         >
           <motion.a 
             href="https://wa.me/5493516798793?text=Hola%20Maestro%20Isa%C3%ADas,%20necesito%20recuperar%20a%20mi%20pareja" 
@@ -47,12 +48,12 @@ const Hero = () => {
             target="_blank" 
             rel="noopener noreferrer"
             whileHover={{ 
-              scale: 1.05,
+              scale: 1.03,
               transition: { duration: 0.2 }
             }}
-            whileTap={{ scale: 0.95 }}
+            whileTap={{ scale: 0.97 }}
           >
-            <Icon icon="bi:whatsapp" width="24" height="24" style={{ marginRight: '10px' }} />
+            <Icon icon="bi:whatsapp" width="22" height="22" />
             CONSULTA GRATIS POR WHATSAPP
           </motion.a>
         </motion.div>

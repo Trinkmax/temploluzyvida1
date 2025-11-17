@@ -4,9 +4,7 @@ import { memo, useRef, useState } from 'react'
 import ScrollReveal from './animations/ScrollReveal'
 import SlideIn from './animations/SlideIn'
 import ScaleIn from './animations/ScaleIn'
-import FadeIn from './animations/FadeIn'
 import Parallax from './animations/Parallax'
-import FloatingElement from './animations/FloatingElement'
 import BlurIn from './animations/BlurIn'
 import RotateIn from './animations/RotateIn'
 
@@ -135,32 +133,30 @@ const About = memo(() => {
               initial={{ opacity: 0, x: 50, rotate: -10 }}
               animate={isInView ? { opacity: 1, x: 0, rotate: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.5 }}
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.05 }}
             >
-              <FloatingElement duration={3} distance={15}>
-                <motion.div
-                  className="badge-icon"
-                  animate={{ 
-                    filter: [
-                      "brightness(1) drop-shadow(0 0 0px rgba(56, 151, 240, 0))",
-                      "brightness(1.15) drop-shadow(0 0 4px rgba(56, 151, 240, 0.4))",
-                      "brightness(1) drop-shadow(0 0 0px rgba(56, 151, 240, 0))"
-                    ],
-                    scale: [1, 1.05, 1]
-                  }}
-                  transition={{ 
-                    duration: 2.5,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                >
-                  <Icon icon="ph:seal-check-fill" width="30" height="30" style={{ color: '#3897f0' }} />
-                </motion.div>
-                <div className="badge-content">
-                  <span className="badge-number">+40</span>
-                  <span className="badge-label">Años</span>
-                </div>
-              </FloatingElement>
+              <motion.div
+                className="badge-icon"
+                animate={{ 
+                  filter: [
+                    "brightness(1) drop-shadow(0 0 0px rgba(56, 151, 240, 0))",
+                    "brightness(1.15) drop-shadow(0 0 4px rgba(56, 151, 240, 0.4))",
+                    "brightness(1) drop-shadow(0 0 0px rgba(56, 151, 240, 0))"
+                  ],
+                  scale: [1, 1.05, 1]
+                }}
+                transition={{ 
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <Icon icon="ph:seal-check-fill" width="30" height="30" style={{ color: '#3897f0' }} />
+              </motion.div>
+              <div className="badge-content">
+                <span className="badge-number">+40</span>
+                <span className="badge-label">Años</span>
+              </div>
             </motion.div>
           </motion.div>
 
@@ -184,13 +180,6 @@ const About = memo(() => {
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <motion.div
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                style={{ display: 'inline-block', marginRight: '10px' }}
-              >
-                <Icon icon="ph:sparkle-fill" style={{ color: '#DAA520' }} />
-              </motion.div>
               <span>Brujo, Vidente y Sanador Espiritual</span>
             </motion.div>
 

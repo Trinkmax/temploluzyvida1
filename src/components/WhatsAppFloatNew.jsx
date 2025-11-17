@@ -31,27 +31,28 @@ const WhatsAppFloatNew = () => {
       <motion.div
         className="whatsapp-icon-wrapper"
         animate={{ 
-          rotate: [0, 10, -10, 0]
+          rotate: [0, 8, -8, 0]
         }}
         transition={{
-          duration: 3,
+          duration: 4,
           repeat: Infinity,
           ease: "easeInOut"
         }}
       >
-        <Icon icon="bi:whatsapp" width="32" height="32" />
+        <Icon icon="bi:whatsapp" width="38" height="38" />
       </motion.div>
       <span className="whatsapp-tooltip">¡Escríbeme!</span>
       <motion.div 
         className="whatsapp-pulse-ring"
         animate={{
-          scale: [1, 1.5, 1.5],
-          opacity: [0.5, 0, 0]
+          scale: [1, 1.8],
+          opacity: [0.6, 0]
         }}
         transition={{
-          duration: 2,
+          duration: 2.5,
           repeat: Infinity,
-          ease: "easeOut"
+          ease: [0.4, 0, 0.6, 1],
+          repeatDelay: 0.5
         }}
       />
     </motion.a>

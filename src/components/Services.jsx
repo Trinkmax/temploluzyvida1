@@ -121,15 +121,72 @@ const Services = memo(() => {
               >
                 <motion.div 
                   className="service-icon"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ 
-                    type: "spring", 
-                    stiffness: 260, 
-                    damping: 20,
-                    delay: 0.1
-                  }}
+                  initial={{ scale: 0, opacity: 0 }}
+                  whileInView={
+                    service.animation === "heartbeat" ? {
+                      scale: [0, 1, 1.15, 1.08, 1.2, 1],
+                      opacity: [0, 1, 1, 1, 1, 1],
+                      transition: { 
+                        duration: 1.3, 
+                        ease: "easeInOut", 
+                        delay: index * 0.1,
+                        times: [0, 0.3, 0.5, 0.65, 0.8, 1]
+                      }
+                    } :
+                    service.animation === "running" ? {
+                      scale: [0, 1, 1.08, 1.08, 1.08, 1.08, 1],
+                      opacity: [0, 1, 1, 1, 1, 1, 1],
+                      x: [0, 0, -8, 8, -8, 8, 0],
+                      transition: { 
+                        duration: 1.2, 
+                        delay: index * 0.1,
+                        times: [0, 0.25, 0.4, 0.55, 0.7, 0.85, 1]
+                      }
+                    } :
+                    service.animation === "shine" ? {
+                      scale: [0, 1, 1.12, 1, 1.12, 1],
+                      opacity: [0, 1, 1, 1, 1, 1],
+                      filter: ["brightness(1)", "brightness(1)", "brightness(1.4)", "brightness(1)", "brightness(1.4)", "brightness(1)"],
+                      rotate: [0, 0, 4, -4, 4, 0],
+                      transition: { 
+                        duration: 1.3, 
+                        delay: index * 0.1,
+                        times: [0, 0.25, 0.45, 0.65, 0.85, 1]
+                      }
+                    } :
+                    service.animation === "flicker" ? {
+                      scale: [0, 1, 1.08, 1.03, 1.12, 1.03, 1.08, 1],
+                      opacity: [0, 1, 0.9, 1, 0.87, 1, 0.9, 1],
+                      y: [0, 0, -2, 0, -2, 0, -2, 0],
+                      transition: { 
+                        duration: 1.4, 
+                        delay: index * 0.1,
+                        times: [0, 0.2, 0.35, 0.5, 0.65, 0.8, 0.9, 1]
+                      }
+                    } :
+                    service.animation === "mystical" ? {
+                      scale: [0, 1, 1.15, 1.15, 1],
+                      opacity: [0, 1, 1, 1, 1],
+                      rotate: [0, 0, 180, 360, 360],
+                      filter: ["brightness(1) hue-rotate(0deg)", "brightness(1) hue-rotate(0deg)", "brightness(1.25) hue-rotate(40deg)", "brightness(1) hue-rotate(0deg)", "brightness(1) hue-rotate(0deg)"],
+                      transition: { 
+                        duration: 1.6, 
+                        delay: index * 0.1,
+                        times: [0, 0.2, 0.5, 0.85, 1]
+                      }
+                    } : {
+                      scale: [0, 1, 1.12, 1.12, 1],
+                      opacity: [0, 1, 1, 1, 1],
+                      rotate: [0, 0, -4, 4, 0],
+                      y: [0, 0, -4, 0, 0],
+                      transition: { 
+                        duration: 1.1, 
+                        delay: index * 0.1,
+                        times: [0, 0.2, 0.5, 0.75, 1]
+                      }
+                    }
+                  }
+                  viewport={{ once: false, amount: 0.5 }}
                   whileHover={
                     service.animation === "heartbeat" ? {
                       scale: [1, 1.2, 1.1, 1.25, 1],
@@ -153,10 +210,10 @@ const Services = memo(() => {
                       transition: { duration: 1 }
                     } :
                     service.animation === "mystical" ? {
-                      scale: [1, 1.2, 1],
-                      rotate: [0, 180, 360],
-                      filter: ["brightness(1) hue-rotate(0deg)", "brightness(1.3) hue-rotate(45deg)", "brightness(1) hue-rotate(0deg)"],
-                      transition: { duration: 1.2 }
+                      scale: [1, 1.15, 1.2, 1.15, 1],
+                      rotate: [0, 90, 180, 270, 360],
+                      filter: ["brightness(1) hue-rotate(0deg)", "brightness(1.2) hue-rotate(30deg)", "brightness(1.3) hue-rotate(45deg)", "brightness(1.2) hue-rotate(30deg)", "brightness(1) hue-rotate(0deg)"],
+                      transition: { duration: 1.4, ease: "linear" }
                     } :
                     service.animation === "shuffle" ? {
                       rotate: [0, -15, 15, -10, 10, 0],

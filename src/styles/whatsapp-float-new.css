@@ -1,26 +1,30 @@
-/* Nuevo botón flotante de WhatsApp - Más moderno y limpio */
+/* Nuevo botón flotante de WhatsApp - Optimizado UX/UI */
 
 .whatsapp-float-new {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 65px;
-    height: 65px;
-    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    bottom: 24px;
+    right: 24px;
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(135deg, #25D366 0%, #20BA5C 50%, #128C7E 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.35), 
+                0 2px 8px rgba(0, 0, 0, 0.15);
     cursor: pointer;
     z-index: 9999;
     color: white;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
 }
 
 .whatsapp-float-new:hover {
-    box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+    box-shadow: 0 8px 32px rgba(37, 211, 102, 0.5), 
+                0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
 }
 
 .whatsapp-icon-wrapper {
@@ -66,23 +70,38 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    border: 3px solid #25D366;
+    border: 2px solid #25D366;
     border-radius: 50%;
     pointer-events: none;
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Responsive - Tamaños optimizados según UX/UI Guidelines */
+@media (max-width: 1024px) {
     .whatsapp-float-new {
-        width: 55px;
-        height: 55px;
+        width: 64px;
+        height: 64px;
         bottom: 20px;
         right: 20px;
     }
     
     .whatsapp-icon-wrapper svg {
-        width: 28px;
-        height: 28px;
+        width: 34px;
+        height: 34px;
+    }
+}
+
+@media (max-width: 768px) {
+    .whatsapp-float-new {
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .whatsapp-icon-wrapper svg {
+        width: 32px;
+        height: 32px;
     }
     
     .whatsapp-tooltip {
@@ -92,15 +111,15 @@
 
 @media (max-width: 480px) {
     .whatsapp-float-new {
-        width: 50px;
-        height: 50px;
-        bottom: 15px;
-        right: 15px;
+        width: 56px;
+        height: 56px;
+        bottom: 16px;
+        right: 16px;
     }
     
     .whatsapp-icon-wrapper svg {
-        width: 24px;
-        height: 24px;
+        width: 30px;
+        height: 30px;
     }
 }
 

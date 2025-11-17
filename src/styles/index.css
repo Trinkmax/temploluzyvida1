@@ -161,28 +161,48 @@ section {
     -webkit-backdrop-filter: blur(10px);
 }
 
-/* Ocultar scrollbar pero mantener funcionalidad */
-::-webkit-scrollbar {
-    width: 0px;
-    height: 0px;
+/* Scrollbar visible y estilizada - Solo Desktop */
+@media (min-width: 769px) {
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+        border-radius: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #660000, #b8860b);
+    }
+
+    /* Para Firefox */
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary-color) #f1f1f1;
+    }
 }
 
-::-webkit-scrollbar-track {
-    background: transparent;
-}
+/* Scrollbar oculta en Mobile */
+@media (max-width: 768px) {
+    ::-webkit-scrollbar {
+        width: 0px;
+        display: none;
+    }
 
-::-webkit-scrollbar-thumb {
-    background: transparent;
-}
+    /* Para Firefox */
+    * {
+        scrollbar-width: none;
+    }
 
-/* Para Firefox */
-* {
-    scrollbar-width: none;
-}
-
-/* Para IE y Edge antiguos */
-body {
-    -ms-overflow-style: none;
+    /* Para IE y Edge antiguos */
+    body {
+        -ms-overflow-style: none;
+    }
 }
 
 /* Animación de pulso mejorada */
@@ -295,7 +315,7 @@ body {
         linear-gradient(135deg, #1a0505 0%, #4a0000 100%);
     color: var(--white);
     text-align: center;
-    padding: 60px 20px;
+    padding: 80px 24px 60px;
     overflow: hidden;
 }
 
@@ -324,35 +344,49 @@ body {
     z-index: 2;
     max-width: 900px;
     margin: 0 auto;
+    padding: 0 8px;
 }
 
 .hero-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    margin-bottom: 20px;
+    font-size: clamp(2.2rem, 7vw, 3.5rem);
+    margin-bottom: 24px;
     text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
     color: var(--secondary-color);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
 }
 
 .hero-subtitle {
-    font-size: clamp(1.3rem, 3vw, 2rem);
-    margin-bottom: 20px;
+    font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+    margin-bottom: 24px;
     font-weight: 300;
+    line-height: 1.4;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero-description {
-    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-size: clamp(1rem, 3.5vw, 1.15rem);
     margin-bottom: 40px;
-    opacity: 0.9;
+    opacity: 0.95;
+    line-height: 1.6;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .urgency-text {
-    margin-top: 20px;
-    font-size: 1.1rem;
+    margin-top: 24px;
+    font-size: clamp(0.95rem, 3vw, 1.1rem);
     color: var(--secondary-color);
-    font-weight: bold;
+    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 8px;
+    line-height: 1.5;
+    flex-wrap: wrap;
 }
 
 @keyframes fadeInDown {
@@ -384,18 +418,21 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 18px 40px;
+    padding: 18px 36px;
     background: linear-gradient(135deg, var(--success-color) 0%, #1ea952 100%);
     color: var(--white);
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 3.5vw, 1.1rem);
     font-weight: bold;
     border-radius: 50px;
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    gap: 10px;
+    min-height: 56px;
+    white-space: nowrap;
 }
 
 .cta-button:hover {
@@ -429,16 +466,86 @@ body {
 }
 
 /* ============================================
-   URGENCY BAR
+   URGENCY BAR - TICKER STYLE
    ============================================ */
 .urgency-bar {
-    background: linear-gradient(90deg, var(--accent-color) 0%, #ff6a33 100%);
+    background: linear-gradient(135deg, #ff4500 0%, #ff6a33 50%, #ff8c5a 100%);
     color: var(--white);
-    padding: 15px 20px;
-    text-align: center;
-    font-weight: bold;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    animation: slideDown 0.5s ease;
+    padding: 14px 0;
+    box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.urgency-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    animation: shine 3s infinite;
+    z-index: 0;
+}
+
+@keyframes shine {
+    to {
+        left: 100%;
+    }
+}
+
+.urgency-ticker-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.urgency-ticker {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    white-space: nowrap;
+    will-change: transform;
+}
+
+.urgency-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    vertical-align: middle;
+}
+
+.urgency-label {
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    margin-right: 8px;
+}
+
+.urgency-offer {
+    font-weight: 600;
+    font-size: 1rem;
+    opacity: 0.98;
+    margin-right: 20px;
+}
+
+.urgency-separator {
+    font-weight: 700;
+    font-size: 1.2rem;
+    opacity: 0.7;
+    margin: 0 10px;
+}
+
+.urgency-timer-text {
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: rgba(0,0,0,0.2);
+    padding: 4px 12px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    margin-left: 8px;
 }
 
 @keyframes slideDown {
@@ -2079,8 +2186,54 @@ section {
     }
 
     .hero {
-        min-height: 90vh;
-        padding: 40px 20px;
+        min-height: 100vh;
+        padding: 60px 20px 50px;
+    }
+    
+    .hero-content {
+        padding: 0 4px;
+    }
+    
+    .hero-title {
+        margin-bottom: 20px;
+    }
+    
+    .hero-subtitle {
+        margin-bottom: 20px;
+    }
+    
+    .hero-description {
+        margin-bottom: 32px;
+    }
+    
+    .urgency-text {
+        margin-top: 20px;
+        padding: 0 16px;
+    }
+    
+    .cta-button {
+        width: 100%;
+        max-width: 400px;
+        padding: 16px 32px;
+        font-size: 0.95rem;
+    }
+    
+    /* Urgency Bar Mobile */
+    .urgency-bar {
+        padding: 12px 0;
+    }
+    
+    .urgency-label {
+        font-size: 0.95rem;
+    }
+    
+    .urgency-offer {
+        font-size: 0.9rem;
+    }
+    
+    .urgency-timer-text {
+        font-size: 0.85rem;
+        padding: 3px 10px;
     }
 
     /* About Modern - Mobile */
@@ -2220,13 +2373,66 @@ section {
 }
 
 @media (max-width: 480px) {
+    .hero {
+        padding: 50px 16px 40px;
+    }
+    
+    .hero-content {
+        padding: 0;
+    }
+    
+    .hero-title {
+        margin-bottom: 16px;
+        letter-spacing: -0.03em;
+    }
+    
+    .hero-subtitle {
+        margin-bottom: 16px;
+    }
+    
+    .hero-description {
+        margin-bottom: 28px;
+    }
+    
+    .urgency-text {
+        margin-top: 16px;
+        padding: 0 8px;
+        text-align: center;
+    }
+    
     .cta-button {
-        padding: 15px 30px;
-        font-size: 1rem;
+        width: 100%;
+        max-width: 100%;
+        padding: 14px 24px;
+        font-size: 0.9rem;
+        min-height: 52px;
     }
 
     .section-title {
         font-size: 1.8rem;
+    }
+    
+    /* Urgency Bar Small Mobile */
+    .urgency-bar {
+        padding: 10px 0;
+    }
+    
+    .urgency-label {
+        font-size: 0.85rem;
+    }
+    
+    .urgency-offer {
+        font-size: 0.8rem;
+    }
+    
+    .urgency-timer-text {
+        font-size: 0.75rem;
+        padding: 2px 8px;
+    }
+    
+    .urgency-separator {
+        font-size: 1rem;
+        margin: 0 6px;
     }
 
     /* About Modern - Small Mobile */

@@ -72,10 +72,80 @@ const PainPoints = () => {
               >
               <motion.div 
                 className="pain-icon"
-                initial={{ scale: 0.8, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
+                initial={{ scale: 0, opacity: 0 }}
+                whileInView={
+                  point.animation === "heartbreak" ? {
+                    scale: [0, 1, 1.2, 1.1, 1],
+                    opacity: [0, 1, 1, 1, 1],
+                    x: [0, 0, -3, 3, 0],
+                    filter: ["hue-rotate(0deg)", "hue-rotate(0deg)", "hue-rotate(15deg)", "hue-rotate(5deg)", "hue-rotate(0deg)"],
+                    transition: { 
+                      duration: 1.2, 
+                      delay: index * 0.1,
+                      times: [0, 0.25, 0.5, 0.75, 1]
+                    }
+                  } :
+                  point.animation === "ring" ? {
+                    scale: [0, 1, 1.08, 1.08, 1.08, 1.08, 1.08, 1.08, 1],
+                    opacity: [0, 1, 1, 1, 1, 1, 1, 1, 1],
+                    rotate: [0, 0, -15, 15, -15, 15, -10, 10, 0],
+                    transition: { 
+                      duration: 1.3, 
+                      delay: index * 0.1,
+                      times: [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85, 1]
+                    }
+                  } :
+                  point.animation === "fadeOut" ? {
+                    scale: [0, 1, 1.15, 0.95, 1.15, 1],
+                    opacity: [0, 1, 0.6, 1, 0.6, 1],
+                    transition: { 
+                      duration: 1.3, 
+                      delay: index * 0.1,
+                      times: [0, 0.25, 0.45, 0.65, 0.85, 1]
+                    }
+                  } :
+                  point.animation === "pulse" ? {
+                    scale: [0, 1, 1.15, 1, 1.15, 1],
+                    opacity: [0, 1, 0.75, 1, 0.75, 1],
+                    transition: { 
+                      duration: 1.4, 
+                      delay: index * 0.1,
+                      times: [0, 0.25, 0.45, 0.65, 0.85, 1]
+                    }
+                  } :
+                  point.animation === "zap" ? {
+                    scale: [0, 1, 1.25, 1, 1.25, 1],
+                    opacity: [0, 1, 1, 1, 1, 1],
+                    rotate: [0, 0, -8, 8, -8, 0],
+                    y: [0, 0, -5, 0, -5, 0],
+                    filter: ["brightness(1)", "brightness(1)", "brightness(1.4)", "brightness(1)", "brightness(1.4)", "brightness(1)"],
+                    transition: { 
+                      duration: 1.1, 
+                      delay: index * 0.1,
+                      times: [0, 0.2, 0.4, 0.6, 0.8, 1]
+                    }
+                  } :
+                  point.animation === "stop" ? {
+                    scale: [0, 1, 0.9, 1.2, 0.9, 1.15, 1],
+                    opacity: [0, 1, 1, 1, 1, 1, 1],
+                    rotate: [0, 0, -5, 5, -5, 5, 0],
+                    transition: { 
+                      duration: 1.2, 
+                      delay: index * 0.1,
+                      times: [0, 0.25, 0.4, 0.55, 0.7, 0.85, 1]
+                    }
+                  } : {
+                    scale: [0, 1, 1.15, 1.15, 1],
+                    opacity: [0, 1, 1, 1, 1],
+                    rotate: [0, 0, -8, 8, 0],
+                    transition: { 
+                      duration: 1.0, 
+                      delay: index * 0.1,
+                      times: [0, 0.25, 0.5, 0.75, 1]
+                    }
+                  }
+                }
+                viewport={{ once: false, amount: 0.5 }}
                 whileHover={
                   point.animation === "heartbreak" ? {
                     scale: [1, 1.2, 1.1],
