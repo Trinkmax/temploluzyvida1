@@ -1,0 +1,24 @@
+{
+  "name": "Maestro Abraham Ocampo - Amarres de Amor",
+  "short_name": "Maestro Abraham",
+  "description": "Brujo experto en amarres de amor, retorno de pareja y trabajos espirituales",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a0505",
+  "theme_color": "#8B0000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/images/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}

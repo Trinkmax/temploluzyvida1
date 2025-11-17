@@ -1,0 +1,27 @@
+# Robots.txt para Maestro Abraham Ocampo
+# Optimizado para SEO
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.pdf$
+
+# Sitemap
+Sitemap: https://www.maestroabrahamocampo.com/sitemap.xml
+
+# Crawl Delay
+Crawl-delay: 1
+
+# Bots específicos
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /

@@ -1,0 +1,129 @@
+/* Modern Carousel Improvements */
+
+.carousel-dots {
+    position: absolute !important;
+    bottom: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    z-index: 5 !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    padding: 10px 20px !important;
+    border-radius: 25px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    margin: 0 !important;
+}
+
+.carousel-dots .dot {
+    border: 2px solid transparent !important;
+}
+
+.carousel-dots .dot:hover {
+    border-color: var(--primary-color) !important;
+}
+
+/* Responsive Carousel Styles */
+@media (max-width: 992px) {
+    .carousel-wrapper-modern {
+        height: 500px !important;
+    }
+    
+    .carousel-container {
+        padding: 0 40px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-wrapper-modern {
+        height: 550px !important;
+    }
+    
+    .carousel-container {
+        padding: 0 20px !important;
+    }
+    
+    .carousel-btn {
+        width: 45px !important;
+        height: 45px !important;
+    }
+    
+    .carousel-btn.prev {
+        left: 10px !important;
+    }
+    
+    .carousel-btn.next {
+        right: 10px !important;
+    }
+    
+    .carousel-dots {
+        bottom: 10px !important;
+        padding: 8px 15px !important;
+        gap: 8px !important;
+    }
+    
+    .carousel-dots .dot {
+        width: 10px !important;
+        height: 10px !important;
+    }
+    
+    .whatsapp-screenshot {
+        max-width: 100% !important;
+        padding: 15px !important;
+    }
+    
+    .whatsapp-screenshot img {
+        max-height: 500px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-wrapper-modern {
+        height: 500px !important;
+    }
+    
+    .carousel-container {
+        padding: 0 10px !important;
+    }
+    
+    .carousel-btn {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    
+    .carousel-btn svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    
+    .carousel-dots {
+        padding: 6px 12px !important;
+        gap: 6px !important;
+    }
+    
+    .screenshot-caption {
+        font-size: 0.85rem !important;
+        padding: 20px 15px 15px !important;
+    }
+    
+    .whatsapp-screenshot {
+        max-width: 100% !important;
+        padding: 10px !important;
+    }
+    
+    .whatsapp-screenshot img {
+        max-height: 450px !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .carousel-wrapper-modern {
+        height: 450px !important;
+    }
+    
+    .whatsapp-screenshot img {
+        max-height: 400px !important;
+    }
+}
+
